@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Message</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #89f7fe, #66a6ff);
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
       max-width: 600px;
+      width: 100%;
       display: none;
     }
 
@@ -28,6 +32,9 @@
       line-height: 1.8;
       box-shadow: 0 5px 15px rgba(0,0,0,0.15);
       animation: fadeIn 1.2s ease;
+
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
     @keyframes fadeIn {
@@ -50,9 +57,9 @@
     }
   </style>
 </head>
+  
 <body>
-
-<button class="open-btn" onclick="openMessage()">Buka Pesan</button>
+<button class="open-btn" onclick="openMessage()"> Pencet Pesan</button>
 
 <div class="container" id="content">
   <div class="card">
@@ -80,10 +87,8 @@ function getYoutubeId(url) {
 window.onload = function() {
   const youtubeLink = "https://youtu.be/CnVVjLOGVoY?si=GPq4Kz0Vpzr9FlsL";
   const videoId = getYoutubeId(youtubeLink);
-
   const iframe = document.getElementById("ytMusic");
 
-  // autoplay (mute dulu biar pasti jalan)
   iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
 };
 
@@ -93,7 +98,6 @@ function openMessage() {
 
   const youtubeLink = "https://youtu.be/CnVVjLOGVoY?si=GPq4Kz0Vpzr9FlsL";
   const videoId = getYoutubeId(youtubeLink);
-
   const iframe = document.getElementById("ytMusic");
 
   setTimeout(() => {
