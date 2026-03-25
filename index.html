@@ -24,7 +24,7 @@
       background: white;
       padding: 25px;
       border-radius: 15px;
-      text-align: center;
+      text-align: justify;
       line-height: 1.8;
       box-shadow: 0 5px 15px rgba(0,0,0,0.15);
       animation: fadeIn 1.2s ease;
@@ -52,7 +52,7 @@
 </head>
 <body>
 
-<button class="open-btn" onclick="openMessage()">💌 Buka Pesan</button>
+<button class="open-btn" onclick="openMessage()">Buka Pesan</button>
 
 <div class="container" id="content">
   <div class="card">
@@ -68,19 +68,16 @@
   </div>
 </div>
 
-<!-- YouTube hidden -->
 <iframe id="ytMusic" width="0" height="0" allow="autoplay; encrypted-media"></iframe>
 
 <script>
 function getYoutubeId(url) {
   let id = "";
-
   if (url.includes("youtu.be/")) {
     id = url.split("youtu.be/")[1].split("?")[0];
   } else if (url.includes("v=")) {
     id = url.split("v=")[1].split("&")[0];
   }
-
   return id;
 }
 
@@ -93,10 +90,8 @@ function openMessage() {
 
   const iframe = document.getElementById("ytMusic");
 
-  // autoplay fix (mute dulu biar pasti jalan)
   iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
 
-  // unmute setelah delay
   setTimeout(() => {
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`;
   }, 1000);
