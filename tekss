@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 600px;
+      display: none;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      line-height: 1.6;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: scale(0.95);}
+      to {opacity:1; transform: scale(1);}
+    }
+
+    .open-btn {
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .open-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<button class="open-btn" onclick="openMessage()">💌 Buka Pesan</button>
+
+<div class="container" id="content">
+  <div class="card">
+    Aku nggak pernah benar-benar tahu kapan semuanya mulai berubah, tapi yang jelas, dari yang awalnya cuma ngobrol biasa tanpa makna apa-apa, pelan-pelan kamu jadi seseorang yang selalu aku tunggu—pesanmu, caramu merespons hal-hal kecil, sampai cara kamu hadir tanpa sadar bikin hari-hariku terasa lebih ringan; mungkin ini terdengar berlebihan, atau bahkan aneh karena kita belum terlalu lama saling kenal, tapi jujur aja, aku mulai nyaman, dan dari nyaman itu tumbuh sesuatu yang lebih dari sekadar teman, sesuatu yang nggak aku rencanakan tapi juga nggak bisa aku abaikan, jadi kalau suatu saat kamu merasa ada yang berbeda dari caraku memperlakukan kamu, itu bukan kebetulan, itu karena aku diam-diam mulai menyimpan rasa yang semoga, entah sekarang atau nanti, bisa kamu pahami.
+  </div>
+</div>
+
+<!-- YouTube hidden -->
+<iframe id="ytMusic" width="0" height="0" allow="autoplay; encrypted-media"></iframe>
+
+<script>
+function getYoutubeId(url) {
+  let id = "";
+
+  if (url.includes("youtu.be/")) {
+    id = url.split("youtu.be/")[1].split("?")[0];
+  } else if (url.includes("v=")) {
+    id = url.split("v=")[1].split("&")[0];
+  }
+
+  return id;
+}
+
+function openMessage() {
+  document.querySelector('.open-btn').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+
+  const youtubeLink = "https://youtu.be/2uJut6USftQ?si=N9UKu_jMLYRvFT08";
+  const videoId = getYoutubeId(youtubeLink);
+
+  const iframe = document.getElementById("ytMusic");
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`;
+}
+</script>
+
+</body>
+</html>
